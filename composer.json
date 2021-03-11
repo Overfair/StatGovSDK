@@ -1,0 +1,23 @@
+{
+    "name": "overfair/stat-gov-sdk",
+    "description": "SDK for stat.gov.kz",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Overfair",
+            "email": "adilet.askarov1@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.0",
+        "kuvardin/data-filter": " dev-master"
+    },
+    "autoload": {
+        "classmap": [
+            "src"
+        ]
+    },
+    "require-dev": {
+        "kuvardin/fields-scanner": " dev-main"
+    }
+}

@@ -43,15 +43,22 @@ $client = new Client();
 $api = new Api($client);
 $scanner = new FieldsScanner;
 
+$is_first = true;
 foreach ($bins as $bin) {
-    while (true) {
-        try {
-            sleep(10);
-            $response = $api->getOrganization($bin);
-            echo "Success [$bin]\n";
-            break;
-        } catch (\GuzzleHttp\Exception\GuzzleException $exception) {
-            echo get_class($exception) . " #{$exception->getCode()}: {$exception->getMessage()}\n";
+    foreach (Api::LANGS as $lang_code) {
+        while (true) {
+            try {
+                $is_first ?: usleep(6000000);
+                $is_first = false;
+                $response = $api->getOrganization($bin, $lang_code);
+                $scanner->scan($response);
+                echo (new DateTime())->format('H:i:s:u'), " Success in $lang_code [$bin]\n";
+                break;
+            } catch (\GuzzleHttp\Exception\GuzzleException $exception) {
+                echo (new DateTime())->format('H:i:s:u'), " #{$exception->getCode()}: {$exception->getMessage()}\n";
+            }
         }
     }
 }
+
+echo $scanner->result->getInfo(), PHP_EOL;

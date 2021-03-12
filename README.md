@@ -1,4 +1,4 @@
-# PHP SKD for stat.gov.kz API
+# PHP SDK for stat.gov.kz API
 ## Installation
 ```shell
 composer require "overfair/stat-gov-sdk: dev-main"

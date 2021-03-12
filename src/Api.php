@@ -14,6 +14,12 @@ class Api
     public const LANG_KK = 'kk';
     public const LANG_EN = 'en';
 
+    public const LANGS = [
+        self::LANG_RU,
+        self::LANG_KK,
+        self::LANG_EN,
+    ];
+
     /**
      * @var Client
      */
@@ -82,12 +88,13 @@ class Api
      * @throws Exceptions\ApiException
      * @throws GuzzleException
      */
-    public function getOrganization(string $biin, string $language = null): Organization
+    public function getOrganization(string $biin, string $language = null): array //Organization
     {
         $response = $this->request('juridical/counter/api', [
             'bin' => $biin,
             'lang' => $language ?? $this->default_language,
         ]);
+        return $response;
         return new Organization($response);
     }
 

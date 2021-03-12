@@ -24,9 +24,9 @@ class Organization
     public string $biin;
 
     /**
-     * @var string Наименование
+     * @var string|null Наименование
      */
-    public string $name;
+    public ?string $name;
 
     /**
      * @var DateTime|null Дата регистрации
@@ -39,9 +39,9 @@ class Organization
     public string $oked_code;
 
     /**
-     * @var string Наименование вида экономической деятельности
+     * @var string|null Наименование вида экономической деятельности
      */
-    public string $oked_name;
+    public ?string $oked_name;
 
     /**
      * @var string|null Вторичный код ОКЭД
@@ -54,9 +54,9 @@ class Organization
     public string $krp_code;
 
     /**
-     * @var string Наименование КРП
+     * @var string|null Наименование КРП
      */
-    public string $krp_name;
+    public ?string $krp_name;
 
     /**
      * @var string|null Код КРП (без учета филиалов)

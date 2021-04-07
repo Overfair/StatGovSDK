@@ -90,7 +90,7 @@ class Api
      */
     public function getOrganization(string $biin, string $language = null): array //Organization
     {
-        $response = $this->request('juridical/counter/api', [
+        $response = $this->request('juridical/counter/api/', [
             'bin' => $biin,
             'lang' => $language ?? $this->default_language,
         ]);

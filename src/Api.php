@@ -70,12 +70,14 @@ class Api
         $response = $this->client->get($uri, [
             RequestOptions::TIMEOUT => $this->request_timeout,
             RequestOptions::CONNECT_TIMEOUT => $this->connect_timeout,
+            RequestOptions::HTTP_ERRORS => false,
         ]);
 
         $response_content = $response->getBody()->getContents();
         $decoded = json_decode($response_content, true,  512, JSON_THROW_ON_ERROR);
         if ($decoded['success'] !== true) {
-            throw new Exceptions\ApiException($decoded['description']);
+            var_dump($decoded);
+            throw new Exceptions\ApiException($decoded['obj'], $decoded['description']);
         }
 
         return $decoded['obj'];
@@ -88,13 +90,12 @@ class Api
      * @throws Exceptions\ApiException
      * @throws GuzzleException
      */
-    public function getOrganization(string $biin, string $language = null): array //Organization
+    public function getOrganization(string $biin, string $language = null): Organization
     {
         $response = $this->request('juridical/counter/api/', [
             'bin' => $biin,
             'lang' => $language ?? $this->default_language,
         ]);
-        return $response;
         return new Organization($response);
     }
 

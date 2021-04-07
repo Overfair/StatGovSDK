@@ -10,7 +10,8 @@
     ],
     "require": {
         "guzzlehttp/guzzle": "^7.0",
-        "kuvardin/data-filter": " dev-master"
+        "kuvardin/data-filter": " dev-master",
+      "ext-json": "*"
     },
     "autoload": {
         "classmap": [

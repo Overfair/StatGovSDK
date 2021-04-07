@@ -49,8 +49,6 @@ class Api
         $this->client = $client;
     }
 
-
-
     /**
      * @param string $method
      * @param array|null $params
